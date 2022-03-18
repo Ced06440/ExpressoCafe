@@ -23,19 +23,15 @@ class RegisterController extends AbstractController
     // fin de l'injection
 
     #[Route('/inscription', name: 'app_register')]
-
     // Quand la fonction est appeler, il appel aussi $request et $encoder
     public function index(Request $request, UserPasswordEncoderInterface $encoder)
     {
-
         //Création du formulaire a partir de notre Entity User et de l'injection si tout est valide  
         $user = new User();
         $form = $this->createForm(RegisterType::class, $user);
-
         $form->handleRequest($request);
 
         if($form->isSubmitted() && $form->isValid()){
-
             $user = $form->getData();
 
             // encode le mot de passe
@@ -45,13 +41,7 @@ class RegisterController extends AbstractController
 
             $this->entityManager->persist($user);
             $this->entityManager->flush();
-
-    
-            
-
-
         }
-
         return $this->render('register/index.html.twig', [
             'form' => $form->createView()
         ]);

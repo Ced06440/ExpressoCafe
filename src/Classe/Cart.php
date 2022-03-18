@@ -18,11 +18,9 @@ class Cart
 
     {
         $cart = $this->session->get('cart', []);
-
-        if(!empty($cart[$id]))
-        {
+        if (!empty($cart[$id])) {
             $cart[$id]++;
-        }else{
+        } else {
             $cart[$id] = 1;
         }
 
@@ -47,16 +45,16 @@ class Cart
         return $this->session->set('cart', $cart);
     }
 
-    public function decrease ($id)
+    public function decrease($id)
     {
         $cart = $this->session->get('cart', []);
 
-        if($cart[$id] > 1 ){
+        if ($cart[$id] > 1) {
             $cart[$id]--;
-        }else{
+        } else {
             unset($cart[$id]);
         }
-        
+
         return $this->session->set('cart', $cart);
     }
 }

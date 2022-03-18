@@ -45,31 +45,23 @@ class CartController extends AbstractController
         return $this->redirectToRoute('app_cart');
     }
 
-
     #[Route('/cart/remove', name: 'remove_my_cart')]
     public function remove(Cart $cart)
     {
-
         $cart->remove();
-
         return $this->redirectToRoute('app_product');
     }
-
 
     #[Route('/cart/delete/{id}', name: 'delete_to_cart')]
     public function delete(Cart $cart, $id)
     {
-
         $cart->delete($id);
-
         return $this->redirectToRoute('app_cart');
     }
-
 
     #[Route('/cart/decrease/{id}', name: 'decrease_to_cart')]
     public function decrese(Cart $cart, $id)
     {
-
         $cart->decrease($id);
 
         return $this->redirectToRoute('app_cart');
